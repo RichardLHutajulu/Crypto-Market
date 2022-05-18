@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-Assesment 2022/Pods-Assesment 2022-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/DSFSparkline/DSFSparkline.framework
+${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework
+${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework

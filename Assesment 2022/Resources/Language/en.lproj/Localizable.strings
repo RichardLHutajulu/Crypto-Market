@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Assesment 2022
+
+  Created by RenhardJH on 26/04/22.
+  
+*/
+
+"$" = "$";
+"language" = "Language";
+"market_cap" = "Market Cap";
+"market_rank" = "Market Rank";
+"description" = "Description";

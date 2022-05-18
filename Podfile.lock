@@ -1,0 +1,51 @@
+PODS:
+  - Alamofire (5.5.0)
+  - Cuckoo (1.7.1):
+    - Cuckoo/Swift (= 1.7.1)
+  - Cuckoo/Swift (1.7.1)
+  - DSFSparkline (4.1.2):
+    - DSFSparkline/Core (= 4.1.2)
+  - DSFSparkline/Core (4.1.2)
+  - Localize-Swift (3.2.0):
+    - Localize-Swift/LocalizeSwiftCore (= 3.2.0)
+    - Localize-Swift/UIKit (= 3.2.0)
+  - Localize-Swift/LocalizeSwiftCore (3.2.0)
+  - Localize-Swift/UIKit (3.2.0):
+    - Localize-Swift/LocalizeSwiftCore
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
+
+DEPENDENCIES:
+  - Alamofire
+  - Cuckoo
+  - DSFSparkline (from `https://github.com/dagronf/DSFSparkline/`)
+  - Localize-Swift
+  - SDWebImage
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Cuckoo
+    - Localize-Swift
+    - SDWebImage
+
+EXTERNAL SOURCES:
+  DSFSparkline:
+    :git: https://github.com/dagronf/DSFSparkline/
+
+CHECKOUT OPTIONS:
+  DSFSparkline:
+    :commit: 7847d7c2ada45f74af66618f77c489fd72eab122
+    :git: https://github.com/dagronf/DSFSparkline/
+
+SPEC CHECKSUMS:
+  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  Cuckoo: 9e258d68137c411df47c6390f72901d5276b4f03
+  DSFSparkline: 5afb02975d7c9f4acc4a94fbdf774796124d6b67
+  Localize-Swift: 6f4475136bdb0d7b2882ea3d4ea919d70142b232
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+
+PODFILE CHECKSUM: 7dce327571fc23ad1b12d8dca13beaceff2e9198
+
+COCOAPODS: 1.11.3
