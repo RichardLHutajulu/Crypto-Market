@@ -37,7 +37,7 @@ Market Charts
 - Utilize Swift feature (i.e enum, protocol, generic, etc)
 - Provide UI to switch beetween language between English & Indonesia (reflected to asset's price currency, name, and description).
 - Local persistent storage.
-- MVC architecture.
+- MVVM architecture pattern.
 - Unit Tests.
 
 
