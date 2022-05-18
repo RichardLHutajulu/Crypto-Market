@@ -11,3 +11,9 @@
 "market_cap" = "Market Cap";
 "market_rank" = "Market Rank";
 "description" = "Description";
+"oops" = "Oops";
+"reload" = "Reload";
+"1d" = "1D";
+"1w" = "1W";
+"1m" = "1M";
+"1y" = "1Y";

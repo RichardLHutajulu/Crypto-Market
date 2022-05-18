@@ -70,6 +70,7 @@
 		FA2252682834971900E8A5AC /* CoinCryptoDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA161E52817C70A009250C4 /* CoinCryptoDetailViewModel.swift */; };
 		FA22526A283499AC00E8A5AC /* response_get_charts.json in Resources */ = {isa = PBXBuildFile; fileRef = FA225269283499AC00E8A5AC /* response_get_charts.json */; };
 		FA22526D28349AE700E8A5AC /* MarketProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA22526C28349AE700E8A5AC /* MarketProviderTest.swift */; };
+		FA77F91D2834C238008CD4B6 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA77F91C2834C238008CD4B6 /* Language.swift */; };
 		FAA161CD28179E54009250C4 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA161CC28179E54009250C4 /* Double+Ext.swift */; };
 		FAA161D12817A6E4009250C4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAA161D32817A6E4009250C4 /* Localizable.strings */; };
 		FAA161D62817A919009250C4 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA161D52817A919009250C4 /* Fonts.swift */; };
@@ -162,6 +163,7 @@
 		FA225266283496B900E8A5AC /* CoinCryptoDetailViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCryptoDetailViewModelTest.swift; sourceTree = "<group>"; };
 		FA225269283499AC00E8A5AC /* response_get_charts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = response_get_charts.json; sourceTree = "<group>"; };
 		FA22526C28349AE700E8A5AC /* MarketProviderTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketProviderTest.swift; sourceTree = "<group>"; };
+		FA77F91C2834C238008CD4B6 /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		FAA161CC28179E54009250C4 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		FAA161D22817A6E4009250C4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FAA161D42817A6F5009250C4 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				04222AE627ECE33700398047 /* Constants.swift */,
 				FAA161D52817A919009250C4 /* Fonts.swift */,
 				FAA161D72817B2C7009250C4 /* Session.swift */,
+				FA77F91C2834C238008CD4B6 /* Language.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -842,6 +845,7 @@
 				04EA761F27EC6CC100C2B487 /* MarketCryptoViewModel.swift in Sources */,
 				FAA161EA28180A3E009250C4 /* DSFSparklineSurfaceView+Ext.swift in Sources */,
 				FAA161D62817A919009250C4 /* Fonts.swift in Sources */,
+				FA77F91D2834C238008CD4B6 /* Language.swift in Sources */,
 				FABB23B02818555400E5E594 /* CoinDetailResponse.swift in Sources */,
 				04BE865927F5AA9F00C31736 /* ViewModelPresenter.swift in Sources */,
 				FABB23AE2818528F00E5E594 /* CoinDetailRequestParam.swift in Sources */,

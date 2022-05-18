@@ -37,7 +37,7 @@ class MarketCryptoViewController: BaseViewController {
 
     private func setupNavbar() {
         let swLocalize = UISwitch()
-        swLocalize.setOn(Session.shared.getLocalize() == "id", animated: false)
+        swLocalize.setOn(Session.shared.getLocalize() == .id, animated: false)
         swLocalize.onTintColor = .orange
         swLocalize.tintColor = .orange
         swLocalize.layer.cornerRadius = swLocalize.frame.height / 2.0
@@ -48,7 +48,7 @@ class MarketCryptoViewController: BaseViewController {
 
         let titleLabel = UILabel()
         titleLabel.font = Fonts.regular.custom(size: 16)
-        titleLabel.text = "\(Session.shared.getLocalize().uppercased())"
+        titleLabel.text = "\(Session.shared.getLocalize())".uppercased()
         let stackView = UIStackView(arrangedSubviews: [swLocalize, titleLabel])
         stackView.axis = .horizontal
         stackView.distribution = .fill
@@ -79,19 +79,19 @@ class MarketCryptoViewController: BaseViewController {
     }
 
     func onNetworkError(message: String) {
-        let alert = UIAlertController(title: "Oops", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Reload", style: .default, handler: { [weak self] _ in
+        let alert = UIAlertController(title: "oops".localized(), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "reload".localized(), style: .default, handler: { [weak self] _ in
             self?.viewModel.getMarkets()
         }))
         self.present(alert, animated: true, completion: nil)
     }
 
     @objc private func didChangeLanguage(sw: UISwitch) {
-        let language = sw.isOn ? "id" : "en"
+        let language = sw.isOn ? Language.id.rawValue : Language.en.rawValue
         Localize.setCurrentLanguage(language)
         Session.shared.setLocalize(language)
         let titleLabel = (sw.superview as? UIStackView)?.subviews.last as? UILabel
-        titleLabel?.text = Session.shared.getLocalize().uppercased()
+        titleLabel?.text = "\(Session.shared.getLocalize())".uppercased()
         viewModel.getMarkets(reset: true)
     }
 }

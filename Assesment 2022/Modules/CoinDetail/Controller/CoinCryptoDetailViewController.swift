@@ -55,6 +55,10 @@ class CoinCryptoDetailViewController: BaseViewController {
         lbMarketCapTitle.text = "market_cap".localized()
         lbMarketRankTitle.text = "market_rank".localized()
         lbDescriptionTitle.text = "description".localized()
+        svTimeChart.setTitle("1d".localized(), forSegmentAt: 0)
+        svTimeChart.setTitle("1w".localized(), forSegmentAt: 1)
+        svTimeChart.setTitle("1m".localized(), forSegmentAt: 2)
+        svTimeChart.setTitle("1y".localized(), forSegmentAt: 3)
     }
 
     private func bindViewModel() {
@@ -80,20 +84,21 @@ class CoinCryptoDetailViewController: BaseViewController {
     }
 
     @objc func timeChartControlValueChanged(_ sender: UISegmentedControl) {
-        viewModel.priceChangePercentage = viewModel.coinData?.marketData?.priceChangePercentage24H ?? 0
+        let localize = Session.shared.getLocalize()
+        viewModel.priceChangePercentage = viewModel.coinData?.marketData?.priceChangePercentage24HInCurrency?[(localize == .id ? CurrencyType.idr : CurrencyType.usd).rawValue] ?? 0
         switch sender.selectedSegmentIndex {
         case 0:
             viewModel.priceChangePercentage = viewModel.coinData?.marketData?.priceChangePercentage24H ?? 0
-            viewModel.getMarketCharts(days: "1")
+            viewModel.getMarketCharts(days: .day)
         case 1:
             viewModel.priceChangePercentage = viewModel.coinData?.marketData?.priceChangePercentage7D ?? 0
-            viewModel.getMarketCharts(days: "7")
+            viewModel.getMarketCharts(days: .week)
         case 2:
             viewModel.priceChangePercentage = viewModel.coinData?.marketData?.priceChangePercentage30D ?? 0
-            viewModel.getMarketCharts(days: "30")
+            viewModel.getMarketCharts(days: .month)
         case 3:
             viewModel.priceChangePercentage = viewModel.coinData?.marketData?.priceChangePercentage1Y ?? 0
-            viewModel.getMarketCharts(days: "365")
+            viewModel.getMarketCharts(days: .year)
         default:
             break
         }
@@ -109,8 +114,8 @@ class CoinCryptoDetailViewController: BaseViewController {
     private func fetchCoinData(_ data: CoinDetailResponse?) {
         lbTicker.text = data?.symbol?.uppercased()
         let localize = Session.shared.getLocalize()
-        lbPrice.text = data?.marketData?.currentPrice?[localize == "id" ? CurrencyType.idr.rawValue : CurrencyType.usd.rawValue]?.toCurrency()
-        viewModel.priceChangePercentage = data?.marketData?.priceChangePercentage24H ?? 0
+        lbPrice.text = data?.marketData?.currentPrice?[localize == .id ? CurrencyType.idr.rawValue : CurrencyType.usd.rawValue]?.toCurrency()
+        viewModel.priceChangePercentage = data?.marketData?.priceChangePercentage24HInCurrency?[(localize == .id ? CurrencyType.idr : CurrencyType.usd).rawValue] ?? 0
         if viewModel.priceChangePercentage >= 0 {
             lbPriceChangePercent.textColor = .systemGreen
             lbPriceChangePercent.text = String(format: "%.2f", viewModel.priceChangePercentage) + "%"
@@ -119,9 +124,9 @@ class CoinCryptoDetailViewController: BaseViewController {
             lbPriceChangePercent.text = String(format: "%.2f", viewModel.priceChangePercentage) + "%"
         }
 
-        lbMarketCap.text = data?.marketData?.marketCap?[localize == "id" ? CurrencyType.idr.rawValue : CurrencyType.usd.rawValue]?.toCurrency()
+        lbMarketCap.text = data?.marketData?.marketCap?[localize == .id ? CurrencyType.idr.rawValue : CurrencyType.usd.rawValue]?.toCurrency()
         lbMarketRank.text = "\(data?.marketCapRank ?? 0)"
-        lbDescription.attributedText = (localize == "id" ? data?.description?.id ?? data?.description?.en : data?.description?.en)?.convertHtmlToAttributedStringWithCSS(font: Fonts.regular.custom(size: 16), csscolor: "gray", lineheight: 5, csstextalign: "justify")
+        lbDescription.attributedText = (localize == .id ? data?.description?.id ?? data?.description?.en : data?.description?.en)?.convertHtmlToAttributedStringWithCSS(font: Fonts.regular.custom(size: 16), csscolor: "gray", lineheight: 5, csstextalign: "justify")
 
         ivIcon.sd_setImage(with: URL(string: data?.image?.large ?? ""))
     }
@@ -141,8 +146,8 @@ class CoinCryptoDetailViewController: BaseViewController {
     }
 
     func onNetworkError(message: String) {
-        let alert = UIAlertController(title: "Oops", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Reload", style: .default, handler: { [weak self] _ in
+        let alert = UIAlertController(title: "oops".localized(), message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "reload".localized(), style: .default, handler: { [weak self] _ in
             self?.viewModel.getCoinDetail()
         }))
         self.present(alert, animated: true, completion: nil)

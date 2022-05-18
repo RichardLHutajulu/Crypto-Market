@@ -18,7 +18,7 @@ class Session {
         userDefaults?.setValue(locale, forKey: kcCurrentLanguage)
     }
 
-    func getLocalize() -> String {
-        return userDefaults?.string(forKey: kcCurrentLanguage) ?? "en"
+    func getLocalize() -> Language {
+        return Language(rawValue: userDefaults?.string(forKey: kcCurrentLanguage) ?? Language.en.rawValue) ?? .en
     }
 }

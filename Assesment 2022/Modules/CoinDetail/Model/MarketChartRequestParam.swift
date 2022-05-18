@@ -13,13 +13,13 @@ struct MarketChartRequestParam: RequestParam {
 
     var id: String = ""
     var vs_currency: CurrencyType = .usd
-    var days = "1"
+    var days: MarketChartDays = .day
 
 
     func getURLParam() -> String {
         let urlParam = url + "/\(id)/\("market_chart")"
             .add("vs_currency", value: vs_currency)
-            .add("days", value: days)
+            .add("days", value: "\(days.rawValue)")
         return urlParam
     }
 
@@ -27,4 +27,11 @@ struct MarketChartRequestParam: RequestParam {
         return nil
     }
 
+}
+
+enum MarketChartDays: String {
+    case day = "1"
+    case week = "7"
+    case month = "30"
+    case year = "365"
 }

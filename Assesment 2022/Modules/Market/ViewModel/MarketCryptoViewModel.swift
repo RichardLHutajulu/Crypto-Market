@@ -25,7 +25,7 @@ class MarketCryptoViewModel: BaseViewModel {
             marketData?.removeAll()
             presenter?.showLoadingView(true)
         }
-        request.currency = Session.shared.getLocalize() == "id" ? .idr : .usd
+        request.currency = Session.shared.getLocalize() == .id ? .idr : .usd
         service.getMarkets(request: request)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in

@@ -10,7 +10,7 @@ import Localize_Swift
 
 extension Double {
     func toCurrency() -> String {
-        if Localize.currentLanguage() == "id" {
+        if Localize.currentLanguage() == Language.id.rawValue {
             let formatter = NumberFormatter()
             formatter.locale = Locale.current
             formatter.numberStyle = .currency

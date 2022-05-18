@@ -12,7 +12,7 @@ struct CoinDetailRequestParam: RequestParam {
     var method: URLMethod = .GET
 
     var id: String = ""
-    var localization = false
+    var localization = true
     var tickers = true
     var market_data = true
     var community_data = false

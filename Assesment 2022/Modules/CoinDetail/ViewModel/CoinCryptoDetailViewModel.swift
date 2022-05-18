@@ -46,7 +46,7 @@ class CoinCryptoDetailViewModel: BaseViewModel {
                 .store(in: &subscriptions)
     }
 
-    func getMarketCharts(days: String = "1") {
+    func getMarketCharts(days: MarketChartDays = .day) {
         requestChart.days = days
         presenter?.showLoadingView(true)
         service.getMarketCharts(request: requestChart)

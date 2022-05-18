@@ -11,3 +11,9 @@
 "market_cap" = "Kapitalisasi Pasar";
 "market_rank" = "Peringkat Pasar";
 "description" = "Deskripsi";
+"oops" = "Oops";
+"reload" = "Muat Ulang";
+"1d" = "1H";
+"1w" = "1M";
+"1m" = "1B";
+"1y" = "1T";
