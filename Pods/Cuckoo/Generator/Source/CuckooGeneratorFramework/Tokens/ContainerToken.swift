@@ -6,16 +6,10 @@
 //  Copyright © 2016 Brightify. All rights reserved.
 //
 
-public protocol ContainerToken: Token, HasAccessibility {
-    var name: String { get }
-    var range: CountableRange<Int> { get }
-    var nameRange: CountableRange<Int> { get }
-    var bodyRange: CountableRange<Int> { get }
+public protocol ContainerToken: ParentToken, ChildToken {
     var initializers: [Initializer] { get }
-    var children: [Token] { get }
     var implementation: Bool { get }
     var inheritedTypes: [InheritanceDeclaration] { get }
-    var attributes: [Attribute] { get }
     var genericParameters: [GenericParameter] { get }
 }
 
@@ -55,6 +49,8 @@ extension ContainerToken {
             "name": name,
             "accessibility": accessibility.sourceName,
             "isAccessible": accessibility.isAccessible,
+            "hasParent": parent != nil,
+            "parentFullyQualifiedName": parent?.fullyQualifiedName ?? "",
             "children": accessibilityAdjustedChildren.map { $0.serializeWithType() },
             "properties": properties,
             "methods": methods,
@@ -63,6 +59,8 @@ extension ContainerToken {
             "mockName": "Mock\(name)",
             "inheritedTypes": inheritedTypes,
             "attributes": attributes.filter { $0.isSupported },
+            "hasUnavailablePlatforms": hasUnavailablePlatforms,
+            "unavailablePlatformsCheck": unavailablePlatformsCheck,
             "isGeneric": isGeneric,
             "genericParameters": isGeneric ? "<\(genericParametersString)>" : "",
             "genericArguments": isGeneric ? "<\(genericArgumentsString)>" : "",

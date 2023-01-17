@@ -73,10 +73,17 @@ public struct Generator {
             return self.escapeReservedKeywords(for: name)
         }
 
+        ext.registerFilter("removeClosureArgumentNames") { (value: Any?) in
+            guard let type = value as? String else { return value }
+            return self.removeClosureArgumentNames(for: type)
+        }
+
         let environment = Environment(extensions: [ext])
 
         let containers = declarations.compactMap { $0 as? ContainerToken }
-            .filter { $0.accessibility.isAccessible }
+            .filter {
+                $0.parent?.areAllHierarchiesAccessible ?? true && $0.accessibility.isAccessible
+            }
             .map { $0.serializeWithType() }
 
         return try environment.renderTemplate(string: Templates.mock, context: ["containers": containers, "debug": debug])
@@ -158,5 +165,13 @@ public struct Generator {
     
     private func escapeReservedKeywords(for name: String) -> String {
         Self.reservedKeywordsNotAllowedAsMethodName.contains(name) ? "`\(name)`" : name
+    }
+
+    private func removeClosureArgumentNames(for type: String) -> String {
+        type.replacingOccurrences(
+            of: "_\\s+?[_a-zA-Z]\\w*?\\s*?:",
+            with: "",
+            options: .regularExpression
+        )
     }
 }

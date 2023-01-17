@@ -271,6 +271,18 @@ A percentbar sparkline takes a single value (0 ... 1) and draws a horizontal bar
 |------------|------------|
 |<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar.png" width="400">|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/percent-bar-2.png" width="400">|
 
+### WiperGauge <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/wiper-gauge-simple.png" width="40"/>
+
+A simple gauge with a single value (0 ... 1). The color displayed in the gauge can be one of
+
+* a single flat color
+* a color mapped from a gradient to the value
+* a color mapped from a color bucket to the value
+
+|  Standard  |
+|------------|
+|<img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/wiper-gauge.png" width="400">|
+
 # Demos
 
 You can find a lot of examples of sparklines in projects in the `Demos/Samples` subfolder, providing examples for macOS (swift and objc), iO, tvOS, macCatalyst and SwiftUI.
@@ -652,6 +664,24 @@ let image = bitmap.image(width: 50, height: 18, scale: 2)!
 
 </details>
 
+<details>
+  <summary>`DSFSparklineOverlay.WiperGauge` <img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/types-new/wiper-gauge-simple.png" width="50"/></summary>
+  
+```swift
+let bitmap = DSFSparklineSurface.Bitmap()
+let wiperGauge = DSFSparklineOverlay.WiperGauge()
+wiperGauge.value = 0.75
+
+bitmap.addOverlay(wiperGauge)
+
+// Generate an image of the wiper gauge with retina scale
+let image = bitmap.image(width: 50, height: 25, scale: 2)
+
+// Do something with 'image'
+```
+
+</details>
+
 ### Component types
 
 A component represents an overlay that isn't a graph in itself.  Examples are grid lines, zero-lines, highlights etc.  A component uses the same datasource so that it aligns with the graph it is associated with.
@@ -680,6 +710,7 @@ Every prebuilt sparkline view has a SwiftUI companion view.
 * `DSFSparklinePieGraphView` / `DSFSparklinePieGraphView.SwiftUI`
 * `DSFSparklineDataBarGraphView` / `DSFSparklineDataBarGraphView.SwiftUI`
 * `DSFSparklinePercentBarGraphView` / `DSFSparklinePercentBarGraphView.SwiftUI`
+* `DSFSparklineWiperGaugeGraphView` / `DSFSparklineWiperGaugeGraphView.SwiftUI`
 
 <details>
   <summary>Sample Swift code</summary>
@@ -912,7 +943,7 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 
 ### SwiftUI
 
-<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.png"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.png" width="400"></a>
+<a href="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.jpg"><img src="https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/SwiftUI1.jpg" width="400"></a>
 
 ### NSAttributedString support
 
@@ -923,6 +954,10 @@ Add `https://github.com/dagronf/DSFSparkline` to your project.
 ![](https://github.com/dagronf/dagronf.github.io/raw/master/art/projects/DSFSparkline/DSFSparkline_lots.gif)
 
 ## Changes
+
+### `4.6.0`
+
+* Added WiperGauge sparkline type
 
 ### `4.3.0`
 

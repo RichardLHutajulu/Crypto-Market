@@ -1,13 +1,7 @@
-//
-//  Attribute.swift
-//  CuckooGenerator
-//
-//  Created by Tadeas Kriz on 2/25/17.
-//
-//
+import Foundation
 
-public struct Attribute {
-    public enum Kind: String {
+public struct Attribute: Hashable {
+    public enum Kind: String, Hashable {
         case objc = "source.decl.attribute.objc"
         case optional = "source.decl.attribute.optional"
         case lazy = "source.decl.attribute.lazy"
@@ -31,6 +25,26 @@ public struct Attribute {
         case .available:
             return true
         }
+    }
+
+    public var unavailablePlatform: String? {
+        guard kind == .available,
+              text.hasPrefix("@available(") else {
+            return nil
+        }
+
+        let parameters = text
+            .dropFirst("@available(".count)
+            .dropLast()
+            .split(separator: ",")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+
+        guard parameters.count >= 2,
+              parameters[1] == "unavailable" else {
+            return nil
+        }
+
+        return String(parameters[0])
     }
 }
 
