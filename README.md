@@ -1,4 +1,4 @@
-# KoinWorks iOS Assesment
+# Crypto App Portfolio
 
 Create a simple Crypto Currencies app using CoinGecko API, contains a list page and a details information page. Product and tech specification as described below.
 
